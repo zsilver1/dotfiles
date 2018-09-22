@@ -1,3 +1,5 @@
 [user]
 	name = Zach Silver
 	email = zsilver96@gmail.com
+[core]
+	editor = emacs -nw -q
