@@ -8,6 +8,7 @@
 [alias]
     br = branch
     c = commit
+    a = add
     co = checkout
     graph = log --graph --oneline --decorate
     l = log --oneline --decorate
