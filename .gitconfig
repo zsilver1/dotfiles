@@ -3,3 +3,13 @@
 	email = zsilver96@gmail.com
 [core]
 	editor = emacs -nw -q
+[commit]
+    status = false
+[alias]
+    br = branch
+    c = commit
+    co = checkout
+    graph = log --graph --oneline --decorate
+    l = log --oneline --decorate
+    lg = log --abbrev-commit --decorate --pretty=format:'%C(bold blue)%h%C(reset) %C(bold green)(%cr)%C(reset) %C(cyan)%cn%C(reset)%C(bold red)%d%C(reset)%n%C(normal)%s%n%C(reset)'
+    s = status -sb
