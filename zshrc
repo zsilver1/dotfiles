@@ -167,9 +167,9 @@ fi
 # ===========
 # PATH SETTINGS
 # ===========
-
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.cargo/bin"
+
 
 # load work specific settings
 if [ "$USER" = "zsilver4" ]; then
