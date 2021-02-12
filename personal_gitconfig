@@ -1,0 +1,13 @@
+[user]
+	name = Zach Silver
+	email = zsilver96@gmail.com
+[alias]
+	b = branch
+    c = commit
+    a = add
+    co = checkout
+    graph = log --graph --oneline --decorate
+    l = log --oneline --decorate
+    ll = log --abbrev-commit --decorate --pretty=format:'%C(bold blue)%h%C(reset) %C(bold green)(%cr)%C(reset) %C(cyan)%cn%C(reset)%C(bold red)%d%C(reset)%n%C(normal)%s%n%C(reset)'
+    lg = log --abbrev-commit --decorate --pretty=format:'%C(bold blue)%h%C(reset) %C(bold green)(%cr)%C(reset) %C(cyan)%cn%C(reset)%C(bold red)%d%C(reset)%n%C(normal)%s%n%C(reset)'
+    s = status -sb

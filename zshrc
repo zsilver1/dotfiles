@@ -170,8 +170,7 @@ fi
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.cargo/bin"
 
-
-# load work specific settings
-if [ "$USER" = "zsilver4" ]; then
-   . ~/.workrc
-fi
+# ==========================
+# LOAD ENV SPECIFIC SETTINGS
+# ==========================
+source .envrc 2> /dev/null
