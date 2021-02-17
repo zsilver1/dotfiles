@@ -170,6 +170,13 @@ fi
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.cargo/bin"
 
+# ======================
+# LOAD SETTINGS FOR EMACS VTERM
+# ======================
+if [[ "$INSIDE_EMACS" = 'vterm' ]]; then
+   source .vterm.sh 2> /dev/null
+fi
+
 # ==========================
 # LOAD ENV SPECIFIC SETTINGS
 # ==========================
