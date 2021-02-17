@@ -35,12 +35,6 @@ vterm_cmd() {
     vterm_printf "51;E$vterm_elisp"
 }
 
-# This is to change the title of the buffer based on information provided by the
-# shell. See, http://tldp.org/HOWTO/Xterm-Title-4.html, for the meaning of the
-# various symbols.
-autoload -U add-zsh-hook
-add-zsh-hook -Uz chpwd (){ print -Pn "\e]2;%m:%2~\a" }
-
 # Sync directory and host in the shell with Emacs's current directory.
 # You may need to manually specify the hostname instead of $(hostname) in case
 # $(hostname) does not return the correct string to connect to the server.
