@@ -180,4 +180,4 @@ fi
 # ==========================
 # LOAD ENV SPECIFIC SETTINGS
 # ==========================
-source .envrc 2> /dev/null
+. ~/.envrc 2> /dev/null
