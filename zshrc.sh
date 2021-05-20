@@ -161,7 +161,6 @@ fi
 # bat instead of cat
 if (( $+commands[bat] )); then
     alias cat="bat --paging=never"
-    alias less="bat --paging=always"
 fi
 
 # ===========
