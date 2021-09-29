@@ -161,7 +161,6 @@ fi
 # bat instead of cat
 if (( $+commands[bat] )); then
     alias cat="bat --paging=never"
-    alias less="bat --paging=always"
 fi
 
 # ===========
@@ -170,7 +169,14 @@ fi
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.cargo/bin"
 
+# ======================
+# LOAD SETTINGS FOR EMACS VTERM
+# ======================
+if [[ "$INSIDE_EMACS" = 'vterm' ]]; then
+   source .vterm.sh 2> /dev/null
+fi
+
 # ==========================
 # LOAD ENV SPECIFIC SETTINGS
 # ==========================
-source .envrc 2> /dev/null
+. ~/.envrc 2> /dev/null
