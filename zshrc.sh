@@ -132,6 +132,9 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init --path)"
 fi
 
+export PIPENV_IGNORE_VIRTUALENVS=1
+export PIPENV_VENV_IN_PROJECT=1
+
 # ============
 # ALIASES
 # ============
