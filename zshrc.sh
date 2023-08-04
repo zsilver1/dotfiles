@@ -166,6 +166,14 @@ if (( $+commands[bat] )); then
     alias cat="bat --paging=never"
 fi
 
+# Kubernetes stuff
+if (( $+commands[kubectl] )); then
+    alias kc=kubectl
+fi
+if (( $+commands[kubectx] )); then
+    alias kx=kubectx
+fi
+
 # ===========
 # PATH SETTINGS
 # ===========
