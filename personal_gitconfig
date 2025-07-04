@@ -11,6 +11,7 @@
     ll = log --abbrev-commit --decorate --pretty=format:'%C(bold blue)%h%C(reset) %C(bold green)(%cr)%C(reset) %C(cyan)%cn%C(reset)%C(bold red)%d%C(reset)%n%C(normal)%s%n%C(reset)'
     lg = log --abbrev-commit --decorate --pretty=format:'%C(bold blue)%h%C(reset) %C(bold green)(%cr)%C(reset) %C(cyan)%cn%C(reset)%C(bold red)%d%C(reset)%n%C(normal)%s%n%C(reset)'
     s = status -sb
+	up = "!f() { \\\n  current=$(git rev-parse --abbrev-ref HEAD); \\\n  primary=main; \\\n  git show-ref --verify --quiet refs/heads/main || primary=master; \\\n  git checkout $primary && git pull origin $primary && \\\n  git checkout \"$current\" && git merge $primary; \\\n}; f"
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
@@ -20,5 +21,5 @@
 	rebase = false
 [init]
 	defaultBranch = main
-[lfs]
-	allowinsecureprotocol = true
+[push]
+	autoSetupRemote = true
