@@ -127,10 +127,8 @@ zstyle ':completion:*' list-dirs-first true
 # ===========
 
 export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init --path)"
-fi
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
 
 export PIPENV_IGNORE_VIRTUALENVS=1
 export PIPENV_VENV_IN_PROJECT=1
@@ -197,3 +195,5 @@ fi
 # LOAD ENV SPECIFIC SETTINGS
 # ==========================
 . ~/.envrc 2> /dev/null
+
+[ -f "/Users/zach/.ghcup/env" ] && . "/Users/zach/.ghcup/env" # ghcup-env
