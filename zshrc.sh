@@ -135,6 +135,12 @@ fi
 export PIPENV_IGNORE_VIRTUALENVS=1
 export PIPENV_VENV_IN_PROJECT=1
 
+# ===========
+# GO
+# ===========
+export GOBIN=$(go env GOPATH)/bin
+export PATH=$PATH:$GOBIN
+
 # ============
 # ALIASES
 # ============
