@@ -185,15 +185,16 @@ export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.cargo/bin"
 
 # ======================
-# LOAD SETTINGS FOR EMACS VTERM
+# LOAD SETTINGS FOR EMACS VTERM AND EAT
 # ======================
 if [[ "$INSIDE_EMACS" = 'vterm' ]]; then
    source .vterm.sh 2> /dev/null
 fi
 
+[ -n "$EAT_SHELL_INTEGRATION_DIR" ] && \
+  source "$EAT_SHELL_INTEGRATION_DIR/zsh"
+
 # ==========================
 # LOAD ENV SPECIFIC SETTINGS
 # ==========================
 . ~/.envrc 2> /dev/null
-
-[ -f "/Users/zach/.ghcup/env" ] && . "/Users/zach/.ghcup/env" # ghcup-env
