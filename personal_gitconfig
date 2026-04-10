@@ -1,6 +1,6 @@
 [user]
 	name = Zach Silver
-	email = zach.silver@gradientboostedinvestments.com
+	email = zach@exacare.com
 [alias]
 	b = branch
     c = commit
@@ -21,7 +21,3 @@
 	rebase = false
 [init]
 	defaultBranch = main
-[push]
-	autoSetupRemote = true
-[url "git@github.com:"]
-	insteadOf = https://github.com/

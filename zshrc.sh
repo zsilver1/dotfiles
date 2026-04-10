@@ -158,11 +158,11 @@ alias mkdir="mkdir -p"
 
 alias tmux="tmux attach || tmux new"
 
-# exa instead of ls
-if (( ! $+commands[exa] )); then
+# eza instead of ls
+if (( ! $+commands[eza] )); then
     alias ls='ls --group-directories-first --color=auto'
 else
-    alias ls='exa --group-directories-first --color=automatic'
+    alias ls='eza --group-directories-first --color=automatic'
 fi
 
 # bat instead of cat
