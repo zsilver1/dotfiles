@@ -15,14 +15,13 @@ fi
 HISTSIZE=100000
 SAVEHIST=100000
 
-setopt append_history
 setopt extended_history
 setopt hist_expire_dups_first
 # ignore duplication command history list
 setopt hist_ignore_dups 
 setopt hist_ignore_space
 setopt hist_verify
-setopt inc_append_history
+setopt hist_reduce_blanks
 # share command history data
 setopt share_history
 
@@ -37,53 +36,14 @@ bindkey "^[[B" down-line-or-beginning-search # Down
 # =============
 #    PROMPT
 # =============
-
-autoload -U colors && colors
-setopt promptsubst
-
-local ret_status="%(?:%{$fg_bold[green]%}$:%{$fg_bold[green]%}$)"
-PROMPT='${ret_status} %{$fg[default]%}%~%{$reset_color%} $(git_prompt_info)'
-
-ZSH_THEME_GIT_PROMPT_PREFIX="%U%{$fg_bold[cyan]%}git:(%{$fg[cyan]%}"
-ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
-ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[cyan]%})%u %{$fg[red]%}~"
-ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[cyan]%})%u %{$fg[green]%}~"
-
-# Outputs current branch info in prompt format
-function git_prompt_info() {
-  local ref
-  if [[ "$(command git config --get customzsh.hide-status 2>/dev/null)" != "1" ]]; then
-    ref=$(command git symbolic-ref HEAD 2> /dev/null) || \
-    ref=$(command git rev-parse --short HEAD 2> /dev/null) || return 0
-    echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_SUFFIX"
-  fi
-}
-
-# Checks if working tree is dirty
-function parse_git_dirty() {
-  local STATUS=''
-  local FLAGS
-  FLAGS=('--porcelain')
-
-  if [[ "$(command git config --get customzsh.hide-dirty)" != "1" ]]; then
-    FLAGS+='--ignore-submodules=dirty'
-    STATUS=$(command git status ${FLAGS} 2> /dev/null | tail -n1)
-  fi
-
-  if [[ -n $STATUS ]]; then
-    echo "$ZSH_THEME_GIT_PROMPT_DIRTY"
-  else
-    echo "$ZSH_THEME_GIT_PROMPT_CLEAN"
-  fi
-}
+PROMPT='%(?.%F{green}.%F{red})%~%f> '
 
 # ===================
 #    AUTOCOMPLETION
 # ===================
-
 # enable completion
 autoload -Uz compinit
-compinit -u
+compinit -C -d "$HOME/.zcompdump"
 
 zmodload -i zsh/complist
 
@@ -170,6 +130,8 @@ if (( $+commands[bat] )); then
     alias cat="bat --paging=never"
 fi
 
+eval "$(zoxide init zsh)"
+
 # Kubernetes stuff
 if (( $+commands[kubectl] )); then
     alias kc=kubectl
@@ -187,14 +149,15 @@ export PATH="$PATH:$HOME/.cargo/bin"
 # ======================
 # LOAD SETTINGS FOR EMACS VTERM AND EAT
 # ======================
-if [[ "$INSIDE_EMACS" = 'vterm' ]]; then
-   source .vterm.sh 2> /dev/null
-fi
-
 [ -n "$EAT_SHELL_INTEGRATION_DIR" ] && \
   source "$EAT_SHELL_INTEGRATION_DIR/zsh"
 
 # ==========================
 # LOAD ENV SPECIFIC SETTINGS
 # ==========================
-. ~/.envrc 2> /dev/null
+. ~/.localrc 2> /dev/null
+
+# direnv
+if (( $+commands[direnv] )); then
+  eval "$(direnv hook zsh)"
+fi

@@ -6,13 +6,12 @@ ln -sv $DIR/tmux.conf ~/.tmux.conf
 ln -sv $DIR/zshrc.sh ~/.zshrc
 ln -sv $DIR/vterm.sh ~/.vterm.sh
 
-read -p "Do you want to install work specific settings (work_gitconfig, workrc, etc.)? (y/n)>" -r
+read -p "Do you want to install work specific settings (work_gitconfig, etc.)? (y/n)>" -r
 
 # install work specific settings
 if [[ $REPLY = "y" ]]; then
     echo "Installing work settings..."
     ln -sv $DIR/work_gitconfig ~/.gitconfig
-    ln -sv $DIR/workrc ~/.envrc
 else
     echo "Installing personal settings only..."
     ln -sv $DIR/personal_gitconfig ~/.gitconfig
